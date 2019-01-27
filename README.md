@@ -19,6 +19,8 @@ ETHEREUM_HTTP="https://kovan.infura.io" // or https://mainnet.infura.io
 API_URL="https://api.kovan.veil.co" // or https://api.veil.co
 ```
 
+The mnemonic and address you specify should be the Ethereum wallet mnemonic and address affiliated with your [Veil account](https://app.veil.co). **You will need a Veil account to run this code.** [Sign up for an account now](https://veil.co/signup).
+
 ## Background reading
 These scripts make heavy use of [Veil's API](https://github.com/veilco/veil-api-docs) and [Veil.js](https://github.com/veilco/veil-js), Veil's Typescript library. We also recommend reading our [Guide to Augur Economics](https://medium.com/veil-blog/a-guide-to-augur-market-economics-16c66d956b6c), which includes details about pricing and payouts of binary and scalar markets.
 
