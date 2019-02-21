@@ -1,5 +1,4 @@
-import simpleScalar from "./scripts/simpleScalar";
-import simpleBinary from "./scripts/simpleBinary";
+import emaScalar from "./scripts/emaScalar";
 import Veil, { Market } from "veil-js";
 
 export default class BulkMarketMaker {
@@ -42,8 +41,7 @@ export default class BulkMarketMaker {
   }
 
   getMarketMakerForMarket(market: Market) {
-    if (market.type === "yesno" && market.index) return simpleBinary;
-    if (market.type === "scalar" && market.index) return simpleScalar;
+    if (market.type === "scalar" && market.index) return emaScalar;
     return null;
   }
 
