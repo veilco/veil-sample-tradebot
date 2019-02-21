@@ -1,4 +1,4 @@
-import { IMarketMakerParams, cancelAllOrders } from "../MarketMaker";
+import { IMarketMakerParams, cancelOpenOrders } from "../MarketMaker";
 import { Market } from "veil-js";
 
 // Return last price from market's data feed
@@ -21,7 +21,7 @@ export default async (params: IMarketMakerParams) => {
   const askPrice = adjustedEthPrice + halfSpread;
 
   // Cancel all pending orders in this market
-  await cancelAllOrders(veil, market);
+  await cancelOpenOrders(veil, market);
 
   // Create long order
   const longQuote = await veil.createQuote(

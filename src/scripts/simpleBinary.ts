@@ -1,4 +1,4 @@
-import { IMarketMakerParams, cancelAllOrders } from "../MarketMaker";
+import { IMarketMakerParams, cancelOpenOrders } from "../MarketMaker";
 
 export default async (params: IMarketMakerParams) => {
   const { market, veil, spread, orderAmount } = params;
@@ -8,7 +8,7 @@ export default async (params: IMarketMakerParams) => {
   const askPrice = midPrice + halfSpread;
 
   // Cancel all pending orders in this market
-  await cancelAllOrders(veil, market);
+  await cancelOpenOrders(veil, market);
 
   // Create long order
   const longQuote = await veil.createQuote(

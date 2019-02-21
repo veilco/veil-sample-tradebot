@@ -7,12 +7,16 @@ export interface IMarketMakerParams {
   orderAmount: number;
 }
 
-export const cancelAllOrders = async (veil: Veil, market: Market) => {
+export const cancelOpenOrders = async (veil: Veil, market: Market) => {
   const userOrders = await veil.getUserOrders(market);
+  let cancelCount = 0;
   for (let order of userOrders.results) {
-    if (order.status === "open") await veil.cancelOrder(order.uid);
+    if (order.status === "open") {
+      await veil.cancelOrder(order.uid);
+      cancelCount += 1;
+    }
   }
-  console.log(`Cancelled ${userOrders.results.length} orders`);
+  console.log(`Cancelled ${cancelCount} open orders`);
 };
 
 export default class MarketMaker {
