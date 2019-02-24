@@ -1,5 +1,7 @@
 import Veil, { Market } from "veil-js";
 
+const maxRetries = 3; // CONFIGURABLE
+
 export interface IMarketMakerParams {
   market: Market;
   veil: any;
@@ -42,12 +44,14 @@ export default class MarketMaker {
     console.log("Starting market maker on market " + marketSlug);
     const market = await this.veil.getMarket(marketSlug);
     const run = async () => {
-      while (true) {
+      let retryCount = 0;
+      while (retryCount <= maxRetries) {
         try {
           await marketMakeFunc({ market, ...this.marketMakerParams });
           break;
         } catch (e) {
           console.error(e);
+          retryCount += 1;
           // Sleep 1 second
           await new Promise(resolve => setTimeout(resolve, 1000));
         }
