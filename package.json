@@ -20,6 +20,6 @@
     "simple-statistics": "^6.1.1",
     "ts-node": "^7.0.1",
     "typescript": "^3.0.3",
-    "veil-js": "^1.0.5"
+    "veil-js": "^1.0.6"
   }
 }

@@ -1,4 +1,5 @@
 import emaScalar from "./scripts/emaScalar";
+import lmScalar from "./scripts/lmScalar";
 import Veil, { Market } from "veil-js";
 
 export default class BulkMarketMaker {
@@ -41,6 +42,9 @@ export default class BulkMarketMaker {
   }
 
   getMarketMakerForMarket(market: Market) {
+    // Filter by channel
+    if (market.channel === "defi" && market.index) return lmScalar;
+    // Filter by type
     if (market.type === "scalar" && market.index) return emaScalar;
     return null;
   }
