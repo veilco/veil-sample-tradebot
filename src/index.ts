@@ -6,6 +6,7 @@ import * as program from "commander";
 import MarketMaker from "./MarketMaker";
 import BulkMarketMaker from "./BulkMarketMaker";
 
+import lmScalar from "./scripts/lmScalar";
 import simpleScalar from "./scripts/simpleScalar";
 import simpleBinary from "./scripts/simpleBinary";
 
@@ -43,6 +44,11 @@ botProgram("simple-binary <market>").action(async (market: string, cmd) => {
 botProgram("simple-scalar <market>").action(async (market: string, cmd) => {
   const marketMaker = initMarketMaker(cmd);
   await marketMaker.start(market, simpleScalar);
+});
+
+botProgram("lm-scalar <market>").action(async (market: string, cmd) => {
+  const marketMaker = initMarketMaker(cmd);
+  await marketMaker.start(market, lmScalar);
 });
 
 botProgram("bulk").action(async cmd => {
